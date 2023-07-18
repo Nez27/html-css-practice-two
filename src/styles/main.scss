@@ -3,18 +3,15 @@
 @import "./abstracts/variables";
 
 // Bases
+@import "./bases/base";
 @import "./bases/typography";
-@import "./bases/reset.scss";
+@import "./bases/reset";
 
 // Components
 @import "./components/button";
-@import "./components/menu-button";
+@import "./components/toggle-menu";
 @import "./components/logo";
 
 // Layouts
 @import "./layouts/navbar";
 @import "./layouts/header";
-
-* {
-  font-family: $primary-font;
-}

@@ -6,6 +6,10 @@ html(lang="en")
     link(rel="stylesheet", href="./styles/main.scss")
     title Food Hut
   body
-    .background
-      include layouts/header
-      include layouts/welcome
+    header.header.flex
+      .logo-wrapper
+        a.logo-link(href="javascript:void(0)")
+          img.logo(src="./assets/images/logo.svg", alt="Food Hut logo")
+      .header-content.flex
+        include layouts/nav-menu
+    include layouts/welcome

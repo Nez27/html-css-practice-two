@@ -53,13 +53,14 @@
 
   .nav-list {
     @include size(auto, auto);
-    @include flex-container(space-between, column);
+    @include flex-container(true, space-between, column);
 
     position: unset;
     flex-direction: row;
     border: none;
     max-width: 600px;
     margin: unset;
+    background-color: transparent;
   }
 
   .nav-item {

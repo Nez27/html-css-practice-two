@@ -9,12 +9,14 @@
   }
 
   &__background-color {
-    @include setAbsoluteAndLocation(true, $top: 200px, $left: 0);
+    @extend %absolute;
+    @include set-absolute-and-location($top: 200px, $left: 0);
     @include size(100%, 50%);
+
     background: linear-gradient(
       180deg,
       rgba(253, 197, 94, 0.01) 0%,
-      rgba(253, 197, 94, 0.06) 50%,
+      rgba(253, 197, 94, 0.1) 50%,
       rgba(253, 197, 94, 0) 100%
     );
   }
@@ -27,15 +29,18 @@
   }
 
   &__background-img {
-    @include setAbsoluteAndLocation(true, $top: 65px, $left: 0);
+    @extend %absolute;
+    @include set-absolute-and-location($top: 65px, $left: 0);
   }
 
   &__main-img {
-    @include setAbsoluteAndLocation(true, $top: 60px, $left: 35px);
+    @extend %absolute;
+    @include set-absolute-and-location($top: 60px, $left: 35px);
   }
 
   &__vegetable-img {
-    @include setAbsoluteAndLocation(true, $bottom: 0, $left: 50px);
+    @extend %absolute;
+    @include set-absolute-and-location($bottom: 0, $left: 50px);
   }
 
   &__content {
@@ -46,31 +51,39 @@
 
   &__heading {
     margin-top: 30px;
+    margin-inline: auto;
     font-size: $fs-x-lg;
     line-height: 129.9%;
     font-weight: 700;
     max-width: 380px;
-    margin-inline: auto;
   }
 
   &__description {
     margin-top: 29px;
-    max-width: 381px;
     margin-inline: auto;
+    max-width: 381px;
     font-size: $fs-md;
   }
 
   &__category {
-    @include flex-container(true, $flex-direction: column, $gap: 41px);
+    @extend %d-flex;
+    @include flex-layout(
+      $direction: column,
+      $justify: space-between,
+      $gap: 41px
+    );
 
+    max-width: 514px;
     margin-top: 81px;
     &-list {
-      @include flex-container(true, $flex-direction: column, $gap: 30px);
+      @extend %d-flex;
+      @include flex-layout($direction: column, $gap: 30px, $justify: center);
     }
   }
 
   &__category-item {
-    @include flex-container(true, $align-items: center, $gap: 10px);
+    @extend %d-flex;
+    @include flex-layout($align: center, $gap: 10px);
   }
 
   &__name-category {
@@ -91,13 +104,18 @@
 }
 
 @media screen and (min-width: 840px) {
+  %absolute_840 {
+    position: absolute;
+  }
+
   .service {
     max-width: $max-width;
     margin-inline: auto;
 
     &__container {
-      @include flex-container(true, $align-items: center);
+      @include flex-layout($align: center);
 
+      display: flex;
       padding-top: 200px;
     }
 
@@ -107,16 +125,37 @@
       max-width: 460px;
     }
 
+    &__img-container {
+      @include size(100%, 619px);
+    }
+
     &__background-img {
-      @include setAbsoluteAndLocation(true, $top: 35px, $left: 0);
+      @include set-absolute-and-location($top: 100px, $left: 0);
+      @extend %absolute_840;
+    }
+
+    &__background-color {
+      @include set-absolute-and-location($top: 400px, $left: -100px);
+      @include size(400px, 50%);
+
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(253, 197, 94, 0.2),
+        rgba(253, 197, 94, 0.1),
+        rgba(253, 197, 94, 0.01),
+        rgba(253, 197, 94, 0)
+      );
     }
 
     &__main-img {
-      @include setAbsoluteAndLocation(true, $top: 30px, $left: 35px);
+      @include set-absolute-and-location($top: 95px, $left: 35px);
+      @extend %absolute_840;
     }
 
     &__vegetable-img {
-      @include setAbsoluteAndLocation(true, $bottom: 30, $left: 50px);
+      @include set-absolute-and-location($bottom: 145px, $left: 50px);
+      @extend %absolute_840;
     }
 
     &__heading {
@@ -129,39 +168,61 @@
     }
 
     &__category {
-      flex-direction: row;
+      @include flex-layout($direction: row, $gap: 10px);
+
       margin-top: 29px;
     }
   }
 }
 
 @media screen and (min-width: 1200px) {
+  %absolute_1200 {
+    position: absolute;
+  }
+
   .service {
     &__container {
-      @include flex-container($align-items: center, $gap: 150px);
-    }
-    &__background-color {
-      display: none;
-    }
-
-    &__img-container {
-      @include size(100%, 619px);
+      @include flex-layout($align: center, $gap: 150px);
     }
 
     &__background-img {
-      @include setAbsoluteAndLocation(true, $top: -200px, $left: 0);
+      @include set-absolute-and-location($top: 0px, $left: 0);
+      @extend %absolute_1200;
+    }
+
+    &__background-color {
+      @include set-absolute-and-location($left: -150px);
+      @include size(500px, 50%);
+
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(253, 197, 94, 0.6),
+        rgba(253, 197, 94, 0.4),
+        rgba(253, 197, 94, 0.2),
+        rgba(253, 197, 94, 0.06),
+        rgba(253, 197, 94, 0.01),
+        rgba(253, 197, 94, 0),
+        rgba(253, 197, 94, 0)
+      );
+    }
+
+    &__description {
+      margin-top: 21px;
     }
 
     &__main-img {
-      @include setAbsoluteAndLocation(true, $top: 70px, $left: 70px);
+      @include set-absolute-and-location($top: -17px, $left: 70px);
+      @extend %absolute_1200;
     }
 
     &__vegetable-img {
-      @include setAbsoluteAndLocation(true, $bottom: 10, $left: 95px);
+      @include set-absolute-and-location($bottom: 95px, $left: 105px);
+      @extend %absolute_1200;
     }
 
     &__content {
-      padding-top: 220px;
+      padding-top: 50px;
     }
   }
 }

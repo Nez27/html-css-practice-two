@@ -24,12 +24,12 @@
   &__banner-container {
     @extend %d-flex;
     @include flex-layout($justify: center, $direction: column);
-    @include size(428px, 417px);
 
     position: relative;
   }
 
   &__main-image {
+    @include size(403px, 417px);
     text-align: right;
     padding-right: 25px;
     z-index: 1;
